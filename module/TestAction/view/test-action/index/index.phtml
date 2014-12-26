@@ -1,1 +1,5 @@
-Action "index", controller "Index", module "TestAction".
+<nav>
+    <ul>
+        <li><a href="<?php echo $this->url('test-action', array('controller' => 'person', 'action'=>'new',));?>">Create a new person</a></li>
+    </ul>
+</nav>
