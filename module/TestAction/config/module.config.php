@@ -4,6 +4,7 @@ return array(
         'invokables' => array(
             'TestAction\Controller\Index' => 'TestAction\Controller\IndexController',
             'TestAction\Controller\Person' => 'TestAction\Controller\PersonController',
+            'TestAction\Controller\Department' => 'TestAction\Controller\DepartmentController',
         ),
     ),
 

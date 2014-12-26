@@ -2,17 +2,17 @@
 
 namespace TestAction\Controller;
 
-use TestAction\Model\PersonDao;
+use TestAction\Model\DepartmentDao;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class PersonController extends AbstractActionController
+class DepartmentController extends AbstractActionController
 {
 
     public function indexAction()
     {
         return new ViewModel(array(
-            'people' => PersonDao::getAll(),
+            'departments' => DepartmentDao::getAll(),
         ));
     }
 

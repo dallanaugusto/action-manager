@@ -1,0 +1,19 @@
+<p><a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action'=>'new',));?>">Add new department</a></p>
+
+<table class="table">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($departments as $department) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($department->getId());?></td>
+    <td><?php echo $this->escapeHtml($department->getName());?></td>
+    <td>
+        <a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action' => 'edit',))."?id=".$department->getId();?>">Edit</a>
+        <a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action' => 'delete',))."?id=".$department->getId();?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
