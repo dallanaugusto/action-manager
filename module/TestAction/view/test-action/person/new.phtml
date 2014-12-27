@@ -1,3 +1,25 @@
-Module: TestAction
-Controller: Person
-Action: new
+<p>Follow the steps below to create a new person</p>
+<ul>
+<?php
+    if (!$this->department) {
+?>
+    <li><a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action'=>'get',))."?father=".$this->action->getId(); ?>">Get a department</a></li>
+<?php
+    } 
+    else {
+?>  
+    <li>You have chosen the department <?php echo $department->getName(); ?>!<a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action'=>'get',))."?father=".$this->action->getId(); ?>">Choose another?</a></li>
+<?php
+    }
+    if (!$this->personFields) {
+?>
+    <li><a href="<?php echo $this->url('test-action', array('controller' => 'person', 'action'=>'getFields',))."?father=".$this->action->getId(); ?>">Get the person's fields</a></li>
+<?php
+    } 
+    else {
+?>  
+    <li>You have defined the person fields: name = <?php echo $person->getName(); ?>!<a href="<?php echo $this->url('test-action', array('controller' => 'person', 'action'=>'getFields',)); ?>">Redefine?</a></li>
+<?php
+    }
+?>     
+</ul>

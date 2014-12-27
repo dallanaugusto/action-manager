@@ -31,6 +31,8 @@ class Action {
     
     public static function getAction($id) 
     {
+        if (\session_status() != \PHP_SESSION_ACTIVE)
+            \session_start();
         if (isset($_SESSION["action"][$id]))
             return unserialize($_SESSION["action"][$id]);
     }
@@ -110,7 +112,10 @@ class Action {
     // -- Session controllers --
     public function init() 
     {
+        if (\session_status() != \PHP_SESSION_ACTIVE)
+            \session_start();
         if (!isset($_SESSION["actionIdCounter"])) {
+            echo "criei";
             $_SESSION["actionIdCounter"] = 1;
             $_SESSION["action"] = array();
         }
@@ -130,6 +135,8 @@ class Action {
     }
     
     public function serializeMe() {
+        if (\session_status() != \PHP_SESSION_ACTIVE)
+            \session_start();
         $_SESSION["action"][$this->id] = serialize($this);
     }
     
@@ -161,6 +168,8 @@ class Action {
     }
     
     public static function printActions() {
+        if (\session_status() != \PHP_SESSION_ACTIVE)
+            \session_start();
         foreach ($_SESSION["action"] as $act) {
             $action = unserialize($act);
             $action->printMe();
