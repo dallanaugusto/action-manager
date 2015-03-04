@@ -1,25 +1,25 @@
 <p>Follow the steps below to create a new person</p>
 <ul>
 <?php
-    if (!$this->department) {
+if (!$department) {
 ?>
-    <li><a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action'=>'get',))."?father=".$this->action->getId(); ?>">Get a department</a></li>
+    <li><a href="<?php echo $this->url().'/department/get?father='.$myAction->getId().'&amp;returnVar=department'; ?>">Get a department</a></li>
 <?php
-    } 
-    else {
+} 
+else {
 ?>  
-    <li>You have chosen the department <?php echo $department->getName(); ?>!<a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action'=>'get',))."?father=".$this->action->getId(); ?>">Choose another?</a></li>
+    <li>You have chosen the department <?php echo $department->getName(); ?>!<a href="<?php echo $this->url().'/department/get?father='.$myAction->getId().'&amp;returnVar=department'; ?>">Choose another?</a></li>
 <?php
-    }
-    if (!$this->personFields) {
+}
+if (!$personFields) {
 ?>
-    <li><a href="<?php echo $this->url('test-action', array('controller' => 'person', 'action'=>'getFields',))."?father=".$this->action->getId(); ?>">Get the person's fields</a></li>
+    <li><a href="<?php echo $this->url().'/person/getFields?father='.$myAction->getId().'&amp;returnVar=personFields'; ?>">Get the person's fields</a></li>
 <?php
-    } 
-    else {
+} 
+else {
 ?>  
-    <li>You have defined the person fields: name = <?php echo $person->getName(); ?>!<a href="<?php echo $this->url('test-action', array('controller' => 'person', 'action'=>'getFields',)); ?>">Redefine?</a></li>
+    <li>You have defined the person fields: name = <?php echo $personFields['name']; ?>!<a href="<?php echo $this->url().'/person/getFields?father='.$myAction->getId().'&amp;returnVar=personFields'; ?>">Redefine?</a></li>
 <?php
-    }
+}
 ?>     
 </ul>

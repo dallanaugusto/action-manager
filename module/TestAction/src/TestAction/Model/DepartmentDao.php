@@ -11,13 +11,13 @@ class DepartmentDao {
     public static function getAll()
     {
         if (!self::$data) {
-            session_start();
-            if (!isset($_SESSION['departmentDao']))
-                $_SESSION['departmentDao'] =  array(
+            $departmentDao = new Container('departmentDao');
+            if (!isset($departmentDao->departments))
+                $departmentDao->departments = array(
                     new Department(1, 'Tecnology'),
                     new Department(2, 'Directory'),
                 );
-            self::$data = $_SESSION['departmentDao'];
+            self::$data = $departmentDao->departments;
         }
         return self::$data;
     }

@@ -4,7 +4,7 @@ return array(
         'invokables' => array(
             'TestAction\Controller\Index' => 'TestAction\Controller\IndexController',
             'TestAction\Controller\Person' => 'TestAction\Controller\PersonController',
-            'TestAction\Controller\Department' => 'TestAction\Controller\DepartmentController',
+            'TestAction\Controller\DepartMent' => 'TestAction\Controller\DepartmentController',
         ),
     ),
 
@@ -21,8 +21,6 @@ return array(
                     ),
                     'defaults' => array(
                         '__NAMESPACE__' => 'TestAction\Controller',
-                        'controller' => 'index',
-                        'action' => 'index',
                     ),
                 ),
             ),

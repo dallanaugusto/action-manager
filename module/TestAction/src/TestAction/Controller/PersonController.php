@@ -2,55 +2,56 @@
 
 namespace TestAction\Controller;
 
-use Dallan\Action\Action;
+use Dallan\Mvc\Controller\AbstractActionController;
+use TestAction\Model\DepartmentDao;
 use TestAction\Model\PersonDao;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class PersonController extends AbstractActionController
 {
 
     public function indexAction()
     {
-        return new ViewModel(array(
-            'people' => PersonDao::getAll(),
-        ));
+        
     }
 
     public function deleteAction()
     {
-        return new ViewModel();
+        
     }
 
     public function editAction()
     {
-        return new ViewModel();
+        
     }
 
     public function getAction()
     {
-        return new ViewModel();
+        
     }
 
     public function newAction()
     {
-        // get the persistent action or create a new one
-        $actionId = \filter_input(\INPUT_GET, 'actionId');
-        $action = $actionId? 
-            Action::getAction($actionId): Action::createAction('person','new');
-        // get the variables if they were already  defined
-        $department = Action::getVariable('department');
-        $personFields = Action::getVariable('personFields');
+        // verify if it wants to return
+        $this->tryToReturnToMyFatherAction();        
+        
+        // test if it's complete
+        $departmentId = $this->getVariableInMyAction('department');
+        $department = $departmentId? 
+            DepartmentDao::getDepartment($departmentId): null;
+        $personFields = $this->getVariableInMyAction('personFields');
+        $complete = $department && $personFields;
+        
         // goes to the view
-        return new ViewModel(array(
-            'action' => $action, 'department' => $department, 
-            'personFields' => $personFields
-        ));
+        return array(
+            'myAction' => $this->getMyAction(), 'myFather' => $this->getMyFatherAction(),
+            'department' => $department, 'personFields' => $personFields,
+            'complete' => $complete
+        );
     }
 
     public function viewAction()
     {
-        return new ViewModel();
+        
     }
 
 

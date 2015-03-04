@@ -2,43 +2,47 @@
 
 namespace TestAction\Controller;
 
+use Dallan\Mvc\Controller\AbstractActionController;
 use TestAction\Model\DepartmentDao;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class DepartmentController extends AbstractActionController
 {
 
     public function indexAction()
     {
-        return new ViewModel(array(
-            'departments' => DepartmentDao::getAll(),
-        ));
+        
     }
 
     public function deleteAction()
     {
-        return new ViewModel();
+        
     }
 
     public function editAction()
     {
-        return new ViewModel();
+        
     }
 
     public function getAction()
     {
-        return new ViewModel();
+        // verify if it wants to return
+        $this->tryToReturnToMyFatherAction();     
+        
+        // goes to the view
+        return array(
+            'myAction' => $this->getMyAction(), 'myFather' => $this->getMyFatherAction(),
+            'departments' => DepartmentDao::getAll(),
+        );   
     }
 
     public function newAction()
     {
-        return new ViewModel();
+        
     }
 
     public function viewAction()
     {
-        return new ViewModel();
+        
     }
 
 

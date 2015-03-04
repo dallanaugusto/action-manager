@@ -1,3 +1,21 @@
-Module: TestAction
-Controller: department
-Action: get
+<p><a href="<?php echo $this->url('test-action', array('controller' => 'department', 'action'=>'new',));?>">Add new department</a></p>
+
+<table class="table">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+</tr>
+<?php 
+foreach ($departments as $department) { 
+    $rowLink = $myFather? 
+        $this->url().'/department/get?actionId='.$myAction->getId().'&amp;return=':
+        $this->url().'/department/get/view?father='.$myAction->getId();
+?>
+<tr>
+    <td><a href="<?php echo $rowLink.$department->getId();?>"><?php echo $this->escapeHtml($department->getId());?></a></td>
+    <td><a href="<?php echo $rowLink.$department->getId();?>"><?php echo $this->escapeHtml($department->getName());?></a></td>
+</tr>
+<?php
+}
+?>
+</table>
